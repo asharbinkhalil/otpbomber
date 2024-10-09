@@ -1,4 +1,5 @@
-# OPT Bomber
+# OPT Bomber 💣
+![](https://files.catbox.moe/vkstnk.jpeg)
 
 ## Overview
 
@@ -22,8 +23,7 @@ This tool is designed to send over 100 OTPs to the specified phone number, ensur
 
 To use this tool, ensure you have the following installed:
 
-- Python 3.x
-- Required Python libraries (see [Installation](#installation))
+- Python 3.10 above
 
 ---
 
@@ -53,12 +53,12 @@ Once everything is installed, you can start using the tool with a simple command
 python3 core.py <phone-number>
 ```
 
-- Replace `<phone-number>` with the target phone number (e.g., `923001234567`).
+- Replace `<phone-number>` with the target phone number (e.g., `03001234567`).
 - Ensure the phone number is in the correct format with the country code (Pakistan's country code is `92`).
 
 Example:
 ```bash
-python3 core.py 923001234567
+python3 core.py 03001234567
 ```
 
 This will trigger the OTP Bomber and send over 100 OTPs to the specified number.
@@ -82,8 +82,3 @@ If you would like to contribute to this project, feel free to submit a pull requ
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ---
-
-### Contact
-
-For any queries or support, feel free to contact [Your Name] at [your-email@example.com].
-
