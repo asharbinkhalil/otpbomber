@@ -1,9 +1,9 @@
-# OPT Bomber 💣
+# OTP Bomber 💣
 ![](https://files.catbox.moe/vkstnk.jpeg)
 
 ## Overview
 
-Are you being disturbed by a persistent caller from a Pakistani number? With **OPT Bomber**, you can take control of the situation by overwhelming them with multiple OTP (One-Time Password) messages in under a minute.
+Are you being disturbed by a persistent caller from a Pakistani number? With **OTP Bomber**, you can take control of the situation by overwhelming them with multiple OTP (One-Time Password) messages in under a minute.
 
 This tool is designed to send over 100 OTPs to the specified phone number, ensuring the recipient is flooded with message notifications. **OPT Bomber** is simple to use and can be set up in just a few steps.
 
