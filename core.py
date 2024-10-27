@@ -14,6 +14,7 @@ import sys
 import string
 import random
 import json
+from uuid import uuid4
 
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -58,7 +59,7 @@ def print_result(data,phone,start_time,websites):
     def print_color(text,color):
         return(colored(text,color))
 
-    description = print_color("[+] OTP Sent","green") + "," + print_color(" [-] OTP Not Sent", "magenta") + "," + print_color(" [x] Rate limit","yellow") + "," + print_color(" [!] Error","red")
+    description = print_color("[+] OTP Sent","green") + ","  + "," + print_color(" [x] Rate limit","yellow") + "," + print_color(" [!] Error","red")
 
     print("*" * (len(phone) + 6))
     print("   " + phone)
@@ -105,7 +106,12 @@ async def maincore():
 
     # Import Modules
     modules = import_submodules("otpbomber.modules")
+    #skip_sites = ["tamasha","xstate",'oraan','tapmad',"priceoye"]  # Add names of the functions to skip
+    skip_sites = []  # Add names of the functions to skip
+    # Filter out functions to skip by checking their __name__ attribute
     websites = get_functions(modules, args)
+    websites = [site for site in websites if site.__name__ not in skip_sites]
+
     # Start time
     start_time = time.time()
 

@@ -27,7 +27,6 @@ async def tamasha(phone, client, out):
         headers=headers,
         json=json_data,
     )
-    
     if response.status_code == 200:
         out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit, "rateLimit": False,"sent": True, "error": False})
         return None

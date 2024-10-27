@@ -41,8 +41,8 @@ async def priceoye(phone, client, out):
         if data["response"] == "OTP send successfully":
             out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit, "rateLimit": False,"sent": True, "error": False})
             return None
-        else:
-            out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit,  "rateLimit": False, "sent": False, "error": False})
+        elif data["response"] == "OTP already sent, please Resend Code after 5 Minutes.":
+            out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit,  "rateLimit": True, "sent": False, "error": False})
             return None
     except Exception:
         out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit,  "rateLimit": False, "sent": False, "error": True})

