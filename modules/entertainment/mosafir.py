@@ -7,9 +7,6 @@ async def mosafir(phone, client, out):
     frequent_rate_limit=False
 
     headers = {
-            "user-agent": random.choice(ua["browsers"]["chrome"]),
-    }
-    headers = {
         'Connection': 'keep-alive',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
          'Origin': 'http://www.sub.mosafir.pk',

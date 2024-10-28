@@ -106,8 +106,8 @@ async def maincore():
 
     # Import Modules
     modules = import_submodules("otpbomber.modules")
-    #skip_sites = ["tamasha","xstate",'oraan','tapmad',"priceoye"]  # Add names of the functions to skip
-    skip_sites = []  # Add names of the functions to skip
+    skip_sites = ["tamasha","xstate",'oraan','tapmad',"priceoye","bajao","mosafir","sportsx"]  # Add names of the functions to skip
+    #skip_sites = [""]  # Add names of the functions to skip
     # Filter out functions to skip by checking their __name__ attribute
     websites = get_functions(modules, args)
     websites = [site for site in websites if site.__name__ not in skip_sites]

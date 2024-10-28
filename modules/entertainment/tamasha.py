@@ -18,7 +18,7 @@ async def tamasha(phone, client, out):
         'device_id': 'web',
         'is_header_enrichment': 'no',
         'other_telco': 'jazz',
-        'mobile': f"92{phone[-10:]}",
+        'mobile': f"+92{phone[-10:]}",
         'phone_details': 'web',
     }
 
