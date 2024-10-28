@@ -53,12 +53,17 @@ Once everything is installed, you can start using the tool with a simple command
 python3 core.py <phone-number>
 ```
 
-- Replace `<phone-number>` with the target phone number (e.g., `03001234567`).
-- Ensure the phone number is in the correct format with the country code (Pakistan's country code is `92`).
+- Replace `<phone-number>` with the target phone number (e.g., `+923001234567`).
+- Ensure the phone number is in the correct format with the country code (Pakistan's country code is `+92`).
 
 Example:
 ```bash
-python3 core.py 03001234567
+python3 core.py +923001234567
+```
+To test for only one site
+
+```bash
+python3 core.py +923001234567 --site priceoye
 ```
 
 This will trigger the OTP Bomber and send over 100 OTPs to the specified number.

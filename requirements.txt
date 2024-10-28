@@ -3,3 +3,5 @@ httpx
 trio
 termcolor
 tqdm
+requests-toolbelt
+requests

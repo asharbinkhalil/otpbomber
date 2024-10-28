@@ -30,8 +30,10 @@ async def mosafir(phone, client, out):
         headers=headers,
         data=data
     )
+    print(response.text)
     try:
         data=response.json()
+
         if data["msg"] == "Success":
             out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit, "rateLimit": False,"sent": True, "error": False})
             return None

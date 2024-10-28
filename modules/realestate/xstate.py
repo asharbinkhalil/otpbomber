@@ -15,7 +15,7 @@ async def xstate(phone, client, out):
 
     json_data = {
         'id': str(uuid4()),
-        'phone': f'+92 {phone[1:]}',
+        'phone': f'+92 {phone[-10:]}',
         'verification_type': 'sms',
     }
 

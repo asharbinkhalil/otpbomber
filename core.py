@@ -51,11 +51,11 @@ def get_functions(modules,args=None):
 def credit():
     """Print Credit"""
     print('Twitter : @asharbinkhalil')
-    print('Github : https://github.com/asharbinkhalil/wtf')
+    print('Github : https://github.com/asharbinkhalil/otpbomber')
     print('Repositry Structure Inspired by https://github.com/megadose/holehe')
 
 
-def print_result(data,phone,start_time,websites):
+def print_result(data,phone,start_time,websites,clear_screen):
     def print_color(text,color):
         return(colored(text,color))
 
@@ -64,8 +64,8 @@ def print_result(data,phone,start_time,websites):
     print("*" * (len(phone) + 6))
     print("   " + phone)
     print("*" * (len(phone) + 6))
-
-    print("\033[H\033[J")
+    if clear_screen:
+        print("\033[H\033[J")
     credit()
 
     for results in data:
@@ -99,18 +99,30 @@ async def launch_module(module,phone, client, out):
 async def maincore():
     parser = ArgumentParser(description=f"wtf v{__version__}")
     parser.add_argument("phone", nargs='+', metavar='PHONE', help="Target phone number")
+    parser.add_argument("--no-clear", default=False, required=False,action="store_true",dest="noclear",help="Do not clear the terminal to display the results")
+    parser.add_argument("--site", default=None, required=False,action="store",dest="site",help="Check only one site")
+
+
+
     args = parser.parse_args()
     credit()
 
     phone = args.phone[0]
+    clear_screen = not args.noclear
+    onlysite=args.site
+
+
 
     # Import Modules
     modules = import_submodules("otpbomber.modules")
-    skip_sites = ["tamasha","xstate",'oraan','tapmad',"priceoye","bajao","mosafir","sportsx"]  # Add names of the functions to skip
-    #skip_sites = [""]  # Add names of the functions to skip
-    # Filter out functions to skip by checking their __name__ attribute
+
     websites = get_functions(modules, args)
-    websites = [site for site in websites if site.__name__ not in skip_sites]
+
+    if onlysite:
+        onlysite=[onlysite]
+        websites = [site for site in websites if site.__name__  in onlysite]
+    else:
+        websites = [site for site in websites if site.__name__ not in []]
 
     # Start time
     start_time = time.time()
@@ -129,7 +141,8 @@ async def maincore():
     # Remove instrument after all tasks are done
     trio.lowlevel.remove_instrument(instrument)
     await client.aclose()
-    print_result(out, phone, start_time, websites)
+    
+    print_result(out, phone, start_time, websites,clear_screen)
 
 def main():
     trio.run(maincore)
