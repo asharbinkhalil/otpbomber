@@ -26,7 +26,6 @@ async def memeworld(phone, client, out):
     response = await client.post('https://app.memeworld.com.pk/login', headers=headers, json=json_data)
     try:
         data=response.json()
-        {'success': True, 'otp': 6894, 'message': 'Verification code sent, Please check your Inbox', 'networkType': 'prepaid'}
         if data["success"] == True and data["message"] == "Verification code sent, Please check your Inbox":
             out.append({"name": name,"domain":domain,"frequent_rate_limit":frequent_rate_limit, "rateLimit": False,"sent": True, "error": False})
             return None
