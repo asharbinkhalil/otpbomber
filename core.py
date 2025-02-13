@@ -76,8 +76,7 @@ def print_result(data,phone,start_time,websites,clear_screen):
             websiteprint = print_color("[-] " + results["domain"], "magenta")
             print(websiteprint)
         elif results["sent"] == True and results["error"] == False:
-            toprint = ""
-            websiteprint = print_color("[+] " + results["domain"] + toprint, "green")
+            websiteprint = print_color("[+] " + results["domain"], "green")
             print(websiteprint)
         elif results["error"] == True:
             websiteprint = print_color("[!] " + results["domain"], "red")
