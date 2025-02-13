@@ -5,3 +5,4 @@ termcolor
 tqdm
 requests-toolbelt
 requests
+pycryptodome
